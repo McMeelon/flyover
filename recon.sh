@@ -5,7 +5,6 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BIN_PATH="${SCRIPT_DIR}/bin/ad_scanner"
 SRC_PATH="${SCRIPT_DIR}/src/scanner.c"
 
-# Цвета для bash
 CYAN='\e[36m'
 GREEN='\e[32m'
 YELLOW='\e[33m'
@@ -13,7 +12,6 @@ RED='\e[31m'
 BOLD='\e[1m'
 NC='\e[0m'
 
-# Функция компиляции C-кода
 compile_c() {
 	if [[ ! -f "$BIN_PATH" ]] || [[ "$SRC_PATH" -nt "$BIN_PATH" ]]; then
 		echo -e "${YELLOW}[*] Compiling C engine...${NC}"
@@ -56,12 +54,9 @@ while true; do
 	read -rp "$(echo -e "${YELLOW}Target (IP or subnet): ${NC}")" target
 	[[ -z "$target" ]] && { echo -e "${RED}[!] Empty target${NC}"; continue; }
 	
-	# Каталог отчётов создаём при необходимости, а путь держим абсолютным:
-	# иначе запуск через симлинк ad-recon из другого каталога ломается
 	mkdir -p "${SCRIPT_DIR}/out"
 	local log_file="${SCRIPT_DIR}/out/report_${target//\//_}_$(date +%H%M%S).txt"
 	
-	# Запускаем C-бинарник и ОДНОВРЕМЕННО сохраняем вывод в файл и показываем на экране
 	"$BIN_PATH" "$target" | tee "$log_file"
 	
 	echo -e "\n${GREEN}[+] Отчёт сохранен в: ${BOLD}${log_file}${NC}"
