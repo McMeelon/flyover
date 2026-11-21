@@ -1,6 +1,6 @@
 # FlyOver
 
-**Active Directory recon, wrapped in Bash, parsed in C.**
+**Active Directory recon**
 
 `FlyOver` is a small recon tool for Active Directory labs: a Bash interface drives an Nmap scan, and a C engine parses the Nmap output into a compact list of hosts, open ports and the attack vectors worth trying next — Kerberoasting, AS-REP Roasting, SMB relay, null sessions, WinRM, MSSQL and the rest.
 
@@ -26,12 +26,6 @@
     • SMB (445): null session, shares enum, NTLM relay, signing check
     • WinRM (5985): password spraying, pass-the-hash (evil-winrm)
 ```
-
-## Why two languages
-
-Bash is good at the thing the user touches — a menu, colours, prompts, saving a report. It is bad at reading a 3000-line Nmap file line by line. C is the opposite. The split keeps the interface easy to edit and the parsing fast and dependency-free: no Python, no `jq`, no `awk` gymnastics.
-
-The C engine is compiled on first run from `src/scanner.c` — there is no binary to trust in the repository.
 
 ## Features
 
