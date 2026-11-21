@@ -55,7 +55,7 @@ Linux only: the engine relies on `/tmp`, `mkstemp()` and `system()` shell semant
 ## Install
 
 ```bash
-git clone https://github.com/<your-user>/flyover.git
+git clone https://github.com/McMeelon/flyover.git
 cd flyover
 chmod +x install.sh
 ./install.sh
