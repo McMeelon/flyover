@@ -22,7 +22,6 @@ mkdir -p "$BIN_DIR" "${SCRIPT_DIR}/bin" "${SCRIPT_DIR}/out"
 ln -sf "${SCRIPT_DIR}/recon.sh" "${BIN_DIR}/ad-recon"
 echo "[+] Symlink created: ${BIN_DIR}/ad-recon"
 
-# Без этого шага команда ad-recon не найдётся в новом терминале
 case ":${PATH}:" in
 	*":${BIN_DIR}:"*) ;;
 	*)
