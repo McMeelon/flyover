@@ -144,4 +144,4 @@ Use only against systems you own or have written permission to test. Scanning ne
 
 ## License
 
-TBD.
+No license file: the source is published for reading and learning. If you want to reuse it in your own project, ask first.
